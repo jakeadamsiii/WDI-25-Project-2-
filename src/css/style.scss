@@ -1,1 +1,132 @@
+body{
+  background: rgba(184, 184, 184,0.8);
+}
 
+h1{
+  color: blue;
+}
+
+#register{
+  border: 2px solid black;
+  margin: 5px;
+  border-radius: 40px;
+  text-align: left;
+  background: #FDFFEB;  
+  form{
+    padding-left: 30px;
+  }
+}
+
+#text{
+  margin-top: -30px;
+}
+
+header {
+  // position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 40px;
+  background-color: rgba(93, 109, 126,0.9);
+  transition: background-color 0.2s ease;
+  &.opaque {
+    background-color: rgba(20, 20, 20, 0.6);
+  }
+  nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        float: right;
+        margin-left: 20px;
+        line-height: 40px;
+        &:last-of-type {
+          margin-left: 0;
+        }
+        &.menu {
+          color: white;
+          cursor: pointer;
+          display: none;
+          font-size: 20px;
+        }
+        a {
+          color: white;
+          font-weight: bold;
+          position: relative;
+          &:after {
+            content: "";
+            height: 2px;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+          }
+          &:hover {
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+section {
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  border-bottom: 2px solid red;
+  &:last-of-type {
+    border-bottom: 0;
+  }
+  h2 {
+    font-size: 28px;
+  }
+}
+
+#hero {
+  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  h1 {
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+}
+
+
+@media only screen and (max-width: 575px) {
+
+  header {
+    height: auto;
+    nav {
+      ul {
+        li {
+          display: block;
+          float: none;
+          text-align: right;
+          &.menu {
+            display: block;
+          }
+        }
+        .dropdown {
+          display: none;
+        }
+      }
+    }
+  }
+}
