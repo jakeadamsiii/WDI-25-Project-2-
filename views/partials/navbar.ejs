@@ -3,10 +3,14 @@
         <ul>
           <li class="menu">&#9776;</li>
           <div class="dropdown">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-                <li><a href="/profile">Profile</a></li>
+            <% if(locals.isAuthenticated) { %>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="/map">Map</a></li>
+        <% } else { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        <% } %>
             <li><a href="/">Home</a></li>
           </div>
         </ul>

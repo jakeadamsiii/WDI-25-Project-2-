@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
   email: { type: String },
+  image: { type: String },
   profilePic: {type: String},
   password: { type: String, required: true }
 });
@@ -14,6 +15,13 @@ userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {
     this._passwordConfirmation = passwordConfirmation;
+  });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdildnproject2/${this.image}`;
   });
 
 // lifecycle hook - mongoose middleware

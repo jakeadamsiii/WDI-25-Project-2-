@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+  <h1><%= user.username %></h1>
+  <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
+
+  <% if(locals.isAuthenticated) { %>
+             <a href="/profile/edit" class="btn btn-primary">Edit</a>
+             <form method="POST" action="/profile">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="delbtn btn btn-danger">Delete account</button>
+             </form>
+           <% } %>
+  </form>
+</div>
+</div>
