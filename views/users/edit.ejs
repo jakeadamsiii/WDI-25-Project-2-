@@ -3,21 +3,22 @@
 <h1>Edit profile</h1>
 
 <form method="POST" action="/profile">
+  <input type="hidden" name="_method" value="PUT">
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" value="<%= user.username %>">
   </div>
   <div>
     <label for="firstName">First Name</label>
-    <input type="text" name="firstName" id="firstName">
+    <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">
   </div>
   <div>
     <label for="lastName">Last Name</label>
-    <input type="text" name="lastName" id="lastName">
+    <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>">
   </div>
   <div>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" value="<%= user.email%>">
   </div>
   <div>
     <label for="image">Profile Picture</label>

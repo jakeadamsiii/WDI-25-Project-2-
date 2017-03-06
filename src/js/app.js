@@ -12,64 +12,64 @@ $(() => {
   if ($map.length) initMap();
 
   function initMap() {
-    const latLng = { lat: 51.583241, lng: -0.411754 };
+    const latLng = { lat: 51.507558, lng: -0.127625 };
     map = new google.maps.Map($map.get(0), {
-      zoom: 16,
+      zoom: 13,
       center: latLng,
       scrollwheel: false,
       // Map styles are stored in another .js file - which is required above the app.js and is available inside this file
       styles: mapStyles
     });
 
-  //  getBikes();
+    getGigs();
   }
 
-  // function getBikes() {
-  //   $.get('https://api.tfl.gov.uk/bikepoint')
-  //     .done((response) => { // Response is equal to an array of all of the bike points
-  //       $.each(response, (index, location) => {
-  //         // Add a marker for each bike point
-  //         addMarker(location);
-  //       });
-  //     });
-  // }
-  //
-  // function addMarker(location) {
-  //   const latLng = { lat: location.lat, lng: location.lon };
-  //   const marker = new google.maps.Marker({
-  //     position: latLng,
-  //     map: map,
-  //     icon: '../assets/images/dot.svg' // Adding a custom icon
-  //   });
-  //
-  //   // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
-  //   marker.addListener('click', () => {
-  //     markerClick(marker, location);
-  //   });
-  // }
-  //
-  // function markerClick(marker, location) {
-  //   // If there is an open infowindow on the map, close it
-  //   if(infowindow) infowindow.close();
-  //
-  //   // Locate the data that we need from the individual bike object
-  //   const locationName = location.commonName;
-  //   const noOfBikes = location.additionalProperties.find(obj => obj.key === 'NbBikes').value;
-  //   const noOfSpaces = location.additionalProperties.find(obj => obj.key === 'NbEmptyDocks').value;
-  //
-  //   // Update the infowindow variable to be a new Google InfoWindow
-  //   infowindow = new google.maps.InfoWindow({
-  //     content: `
-  //     <div class="infowindow">
-  //       <h3>${locationName}</h3>
-  //       <p>Available bikes: <strong>${noOfBikes}</strong></p>
-  //       <p>Free spaces: <strong>${noOfSpaces}</strong></p>
-  //     </div>
-  //     `
-  //   });
-  //
-  //   // Finally, open the new InfoWindow
-  //   infowindow.open(map, marker);
-  // }
+  function getGigs() {
+    const events = $map.data('events');
+    // console.log(events);
+    $.each(events, (index, location) => {
+      console.log(location);
+      addMarker(location);
+    });
+  }
+
+  function addMarker(location) {
+    const latLng = { lat: location.venue.latitude, lng: location.venue.longitude };
+    const marker = new google.maps.Marker({
+      position: latLng,
+      map: map
+    });
+
+    // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
+    marker.addListener('click', () => {
+      markerClick(marker, location);
+    });
+  }
+
+  function markerClick(marker, location) {
+    // If there is an open infowindow on the map, close it
+    if(infowindow) infowindow.close();
+
+    // Locate the data that we need from the individual bike object
+    const eventName = location.eventname;
+    const price = location.entryprice;
+    const venue = location.venue.name;
+    const link = location.link;
+
+    // Update the infowindow variable to be a new Google InfoWindow
+    infowindow = new google.maps.InfoWindow({
+      content: `
+      <div class="infowindow">
+        <h5>${eventName}</h5>
+        <p>${venue}</p>
+        <p>${price}</p>
+        <a href="${link}" target="_blank">Buy tickets</a>
+      </div>
+      `
+    });
+
+    // Finally, open the new InfoWindow
+    infowindow.open(map, marker);
+  }
 
 });
