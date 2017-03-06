@@ -43,11 +43,38 @@ h1{
 }
 
 #loginImage{
-  height:500px;
+  height:86.5vh;
+  border:2px solid white;
+  border-radius: 100px;
   width:500px;
   display: inline-block;
 }
 
+footer{
+  p{
+    float:right;
+    padding-right: 30px;
+    display:block;
+    opacity: 0.7;
+    height: 8px;
+    font-size: 13px;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+.mediabtn{
+  height:30px;
+  width: 30px;
+}
+li {
+  display: inline-block;
+  float: left;
+  margin-left: 20px;
+  line-height: 40px;
+}
+}
 header {
   // position: fixed;
   top: 0;
@@ -122,7 +149,7 @@ section {
 }
 
 #hero {
-  height: 50vh;
+  height: 90vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image.jpg');
   background-position: center;
   background-size: cover;
@@ -142,6 +169,9 @@ footer {
   padding: 10px 0;
   text-align: center;
   color: white;
+  position: fixed;
+  bottom: 0;
+  width:100%;
 }
 
 @media only screen and (max-width: 575px) {

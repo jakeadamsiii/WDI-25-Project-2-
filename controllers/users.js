@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+
 function showRoute(req, res) {
   res.render('users/show');
 }

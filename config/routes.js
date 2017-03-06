@@ -4,6 +4,7 @@ const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
 const users = require('../controllers/users');
 const skiddle = require('../controllers/SkiddleController');
+const oauth = require('../controllers/oauth');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
@@ -30,6 +31,9 @@ router.route('/profile')
 router.route('/profile/edit')
   .get(secureRoute, users.edit);
 
+
+  router.route('/oauth/github')
+    .get(oauth.github);
 
 router.all('*', (req, res) => res.notFound());
 

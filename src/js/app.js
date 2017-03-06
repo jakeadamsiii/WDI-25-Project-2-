@@ -37,8 +37,19 @@ $(() => {
     const latLng = { lat: location.venue.latitude, lng: location.venue.longitude };
     const marker = new google.maps.Marker({
       position: latLng,
-      map: map
+      map: map,
+      animation: google.maps.Animation.DROP,
+      icon: '../assets/images/music-icon.png'
     });
+     marker.addListener('click', toggleBounce);
+
+     function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
 
     // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
     marker.addListener('click', () => {
@@ -46,24 +57,32 @@ $(() => {
     });
   }
 
+
+
   function markerClick(marker, location) {
     // If there is an open infowindow on the map, close it
     if(infowindow) infowindow.close();
+
 
     // Locate the data that we need from the individual bike object
     const eventName = location.eventname;
     const price = location.entryprice;
     const venue = location.venue.name;
     const link = location.link;
+    const date = location.date;
+    const time = location.openingtimes.doorsopen;
 
     // Update the infowindow variable to be a new Google InfoWindow
     infowindow = new google.maps.InfoWindow({
       content: `
       <div class="infowindow">
-        <h5>${eventName}</h5>
+        <h4>${eventName}</h4>
         <p>${venue}</p>
         <p>${price}</p>
-        <a href="${link}" target="_blank">Buy tickets</a>
+        <p>${date}</p>
+        <p>${time}</p>
+        <a class="btn" href="${link}" target="_blank">Buy tickets</a>
+        <a class="btn" href="/profile">Save for later!</a>
       </div>
       `
     });
