@@ -18,6 +18,5 @@ User
     password: 'password',
     passwordConfirmation: 'password'
   }])
-
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());

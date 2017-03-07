@@ -5,12 +5,13 @@ const secureRoute = require('../lib/secureRoute');
 const users = require('../controllers/users');
 const skiddle = require('../controllers/SkiddleController');
 const oauth = require('../controllers/oauth');
+const upload = require('../lib/upload');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/register')
   .get(registrations.new)
-  .post(registrations.create);
+  .post(upload.single('image'), registrations.create);
 
 router.route('/login')
   .get(sessions.new)
@@ -32,8 +33,8 @@ router.route('/profile/edit')
   .get(secureRoute, users.edit);
 
 
-  router.route('/oauth/github')
-    .get(oauth.github);
+router.route('/oauth/github')
+  .get(oauth.github);
 
 router.all('*', (req, res) => res.notFound());
 

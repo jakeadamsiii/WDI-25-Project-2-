@@ -11,6 +11,7 @@ function deleteRoute(req, res, next) {
       req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
     })
     .catch(next);
+    
 }
 
 function createRoute(req, res, next) {
