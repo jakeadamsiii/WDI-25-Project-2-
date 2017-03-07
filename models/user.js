@@ -6,10 +6,11 @@ const userSchema = new mongoose.Schema({
   username: { type: String },
   firstName: { type: String },
   lastName: { type: String },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, unique: true },
   image: { type: String },
   password: { type: String },
-  githubId: { type: Number }
+  githubId: { type: Number },
+  facebookId: {type: String}
 });
 
 userSchema
@@ -28,7 +29,7 @@ userSchema
 
 // lifecycle hook - mongoose middleware
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.githubId && !this.facebookId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password){

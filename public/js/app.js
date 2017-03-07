@@ -17,7 +17,7 @@ $(function () {
     var latLng = { lat: 51.507558, lng: -0.127625 };
     map = new google.maps.Map($map.get(0), {
       zoom: 13,
-      center: latLng,
+      //center: latLng,
       scrollwheel: false,
       // Map styles are stored in another .js file - which is required above the app.js and is available inside this file
       styles: mapStyles
@@ -57,6 +57,34 @@ $(function () {
     marker.addListener('click', function () {
       markerClick(marker, location);
     });
+  }
+
+  var infoWindow = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.DROP,
+    icon: '../assets/images/me-icon.png'
+  });
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      map.setCenter(pos);
+    }, function () {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
   }
 
   function markerClick(marker, location) {

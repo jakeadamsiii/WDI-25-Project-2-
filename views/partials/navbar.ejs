@@ -4,8 +4,8 @@
           <li class="menu">&#9776;</li>
           <div class="dropdown">
             <% if(locals.isAuthenticated) { %>
+                <li><a href="/profile">Profile<img id="profileImg" src="<%= user.imageSRC %>" alt="<%= user.username %>"></a></li>
           <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
             <li><a href="/map">Map</a></li>
         <% } else { %>
           <li><a href="/login">Login</a></li>
