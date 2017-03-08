@@ -6,6 +6,11 @@ $(function () {
 
   // Store the #map div, and make it available to all functions
   var $map = $('#map');
+  $map.on('click', '.saveBtn', submitForm);
+
+  function submitForm() {
+    $('.hiddenForm').submit();
+  }
   // Set a map variable that will hold our Google map, and is available to all functions
   var map = null;
   // Set infowindow as null to begin with, and make it available to all functions
@@ -30,7 +35,6 @@ $(function () {
     var events = $map.data('events');
     // console.log(events);
     $.each(events, function (index, location) {
-      console.log(location);
       addMarker(location);
     });
   }
@@ -43,15 +47,16 @@ $(function () {
       animation: google.maps.Animation.DROP,
       icon: '../assets/images/music-icon.png'
     });
-    marker.addListener('click', toggleBounce);
-
-    function toggleBounce() {
-      if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
+    // marker.addListener('click', toggleBounce);
+    //
+    // function toggleBounce() {
+    //
+    //   if (marker.getAnimation() !== null) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // }
 
     // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
     marker.addListener('click', function () {
@@ -99,12 +104,27 @@ $(function () {
     var date = location.date;
     var time = location.openingtimes.doorsopen;
 
+    $('input[name="eventName"]').val(eventName);
+    $('input[name="price"]').val(price);
+    $('input[name="venue"]').val(venue);
+    $('input[name="link"]').val(link);
+    $('input[name="date"]').val(date);
+    $('input[name="time"]').val(time);
+
     // Update the infowindow variable to be a new Google InfoWindow
     infowindow = new google.maps.InfoWindow({
-      content: '\n      <div class="infowindow">\n        <h4>' + eventName + '</h4>\n        <p>' + venue + '</p>\n        <p>' + price + '</p>\n        <p>' + date + '</p>\n        <p>' + time + '</p>\n        <a class="btn" href="' + link + '" target="_blank">Buy tickets</a>\n        <a class="btn" href="/profile">Save for later!</a>\n      </div>\n      '
+      content: '\n      <div class="infowindow">\n        <h4>' + eventName + '</h4>\n        <p>' + venue + '</p>\n        <p>' + price + '</p>\n        <p>' + date + '</p>\n        <p>' + time + '</p>\n        <a class="btn" href="' + link + '" target="_blank">Buy tickets</a>\n        <a id="specialBtn" class="saveBtn btn" href="#">Save for later!</a>\n      </div>\n      '
     });
 
     // Finally, open the new InfoWindow
     infowindow.open(map, marker);
+  }
+
+  var $save = $('#specialBtn');
+
+  $save.on('click', saveMe);
+
+  function saveMe() {
+    $save.text('Saved!');
   }
 });

@@ -4,6 +4,11 @@ $(() => {
 
   // Store the #map div, and make it available to all functions
   const $map = $('#map');
+  $map.on('click', '.saveBtn', submitForm);
+
+  function submitForm(){
+    $('.hiddenForm').submit();
+  }
   // Set a map variable that will hold our Google map, and is available to all functions
   let map = null;
   // Set infowindow as null to begin with, and make it available to all functions
@@ -28,7 +33,6 @@ $(() => {
     const events = $map.data('events');
     // console.log(events);
     $.each(events, (index, location) => {
-      console.log(location);
       addMarker(location);
     });
   }
@@ -41,15 +45,16 @@ $(() => {
       animation: google.maps.Animation.DROP,
       icon: '../assets/images/music-icon.png'
     });
-    marker.addListener('click', toggleBounce);
-
-    function toggleBounce() {
-      if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
+    // marker.addListener('click', toggleBounce);
+    //
+    // function toggleBounce() {
+    //
+    //   if (marker.getAnimation() !== null) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // }
 
     // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
     marker.addListener('click', () => {
@@ -81,9 +86,9 @@ $(() => {
       handleLocationError(false, infoWindow, map.getCenter());
     }
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-}
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+  }
 
   function markerClick(marker, location) {
     // If there is an open infowindow on the map, close it
@@ -98,6 +103,13 @@ $(() => {
     const date = location.date;
     const time = location.openingtimes.doorsopen;
 
+    $('input[name="eventName"]').val(eventName);
+    $('input[name="price"]').val(price);
+    $('input[name="venue"]').val(venue);
+    $('input[name="link"]').val(link);
+    $('input[name="date"]').val(date);
+    $('input[name="time"]').val(time);
+
     // Update the infowindow variable to be a new Google InfoWindow
     infowindow = new google.maps.InfoWindow({
       content: `
@@ -108,7 +120,7 @@ $(() => {
         <p>${date}</p>
         <p>${time}</p>
         <a class="btn" href="${link}" target="_blank">Buy tickets</a>
-        <a class="btn" href="/profile">Save for later!</a>
+        <a id="specialBtn" class="saveBtn btn" href="#">Save for later!</a>
       </div>
       `
     });
@@ -116,5 +128,13 @@ $(() => {
     // Finally, open the new InfoWindow
     infowindow.open(map, marker);
   }
+
+const $save = $('#specialBtn');
+
+$save.on('click', saveMe);
+
+function saveMe(){
+  $save.text('Saved!');
+}
 
 });

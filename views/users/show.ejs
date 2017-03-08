@@ -1,15 +1,31 @@
 <div class="container">
   <div class="row">
+    <div class="col-lg-4">
+        <img id="profilePic" src="<%= user.imageSRC %>" alt="<%= user.username %>">
+    </div>
+    <section id="profile" class="col-lg-4">
   <h1><%= user.username %></h1>
-  <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
+  <h2><%= user.firstName %> <%= user.lastName %></h2>
 
+</section>
+<div id="btnBox" class="col-lg-4">
   <% if(locals.isAuthenticated) { %>
-             <a href="/profile/edit" class="btn btn-primary">Edit</a>
+             <a href="/profile/edit" class="btn">Edit</a>
              <form method="POST" action="/profile">
             <input type="hidden" name="_method" value="DELETE">
-            <button class="delbtn btn btn-danger">Delete account</button>
+            <button class="delbtn btn">Delete account</button>
              </form>
            <% } %>
   </form>
+</div>
+<div class="col-lg-12" id="line"></div>
+<% user.events.forEach((event)=>{ %>
+  <%= event.eventName %>
+  <%= event.venue %>
+  <%= event.price %>
+  <%= event.link %>
+  <%= event.date %>
+  <%= event.time %>
+<%})%>
 </div>
 </div>

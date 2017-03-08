@@ -30,7 +30,7 @@ function sessionsCreate(req, res, next) {
 }
 
 function sessionsDelete(req, res) {
-  req.session.regenerate(() => res.redirect('/'));
+  req.session.regenerate(() => res.redirect('/register'));
 }
 
 module.exports = {

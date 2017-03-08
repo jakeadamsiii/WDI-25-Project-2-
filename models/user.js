@@ -2,6 +2,16 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 //const s3 = require('aws-sdk/clients/s3');
 
+
+const eventSchema = new mongoose.Schema({
+  eventName: {type: String},
+  price: {type: String},
+  venue: {type: String},
+  link: {type: String},
+  date: {type: String},
+  time: {type: String}
+});
+
 const userSchema = new mongoose.Schema({
   username: { type: String },
   firstName: { type: String },
@@ -10,7 +20,8 @@ const userSchema = new mongoose.Schema({
   image: { type: String },
   password: { type: String },
   githubId: { type: Number },
-  facebookId: {type: String}
+  facebookId: {type: String},
+  events: [eventSchema]
 });
 
 userSchema

@@ -7,7 +7,8 @@ const skiddle = require('../controllers/SkiddleController');
 const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 
-router.get('/', (req, res) => res.render('statics/index'));
+router.get('/', (req, res) => res.render('registrations/new'));
+router.get('/about', (req, res) => res.render('statics/about'));
 
 router.route('/register')
   .get(registrations.new)
@@ -32,6 +33,8 @@ router.route('/profile')
 router.route('/profile/edit')
   .get(secureRoute, users.edit);
 
+router.route('/profile/events')
+.post(secureRoute, users.createEvent);
 
 router.route('/oauth/github')
   .get(oauth.github);

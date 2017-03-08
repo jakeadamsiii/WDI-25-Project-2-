@@ -1,4 +1,4 @@
-// const User = require('../models/user');
+const User = require('../models/user');
 
 
 function showRoute(req, res) {
@@ -7,6 +7,17 @@ function showRoute(req, res) {
 
 function editRoute(req, res) {
   res.render('users/edit');
+}
+
+function createEventRoute(req, res, next){
+  User.findById(req.user.id)
+  .exec()
+  .then((user)=>{
+    user.events.push(req.body);
+    user.save();
+  })
+  .then(() => res.redirect('/profile'))
+  .catch(next);
 }
 
 // function editRoute(req, res, next) {
@@ -68,5 +79,6 @@ module.exports = {
   createImage: createImageRoute,
   edit: editRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  createEvent: createEventRoute
 };
