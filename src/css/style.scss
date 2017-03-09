@@ -1,3 +1,6 @@
+@import 'variables/_fonts.scss';
+@import 'variables/_colors.scss';
+
 body{
   background: #1c1b1d;
   font-family: 'Poppins', sans-serif;
@@ -5,7 +8,7 @@ body{
 }
 
 h5{
-  color:white;
+  color:$primary;
 }
 
 #profilePage{
@@ -19,48 +22,60 @@ h1{
 }
 
 .saveforme{
+  text-align:left;
   background: rgba(0,0,0,0.4);
   border: 2px solid black;
   margin-top: 5px;
 }
 
-.hidden{
-  display: none;
+.editbtn{
+  background: grey;
+  border-radius: 5px;
+  color:white;
+  margin-bottom:10px;
+  margin-top:10px;
+  padding: 5px 20px;
 }
 
-#profile{
-  text-align: center;;
-  h1{
-      color:white;
-  }
-  h2{
-     color:white;
-   }
+.remove{
+  padding: 7px 28px;
 }
 
 #btnBox{
-  padding:20px;
+  padding:80px 20px;
   background: rgba(0,0,0,0.4);
-  margin-top:50px;
-  border:7px solid white;
-  h2{
-    float:left;
-    font-size: 20px;
+  h1{
+    text-align: left;
+      color:$primary;
   }
+  h2{
+    text-align: left;
+     color:$primary;
+   }
+   p{
+     text-align: left;
+   }
+   #UserShowName{
+     margin-top: -20px;
+   }
+   a{
+     text-align: right;
+   }
 }
 
 #line{
-  background-color: white;
+  background-color: $primary;
   height:4px;
   width:100%;
   border-radius: 100px;
-  margin-bottom: 110px;
+  margin-top: 30px;
+  margin-bottom: 80px;
 }
 
 #profilePic{
   height:300px;
   width:300px;
-  border: 7px solid white;
+  border: 7px solid $primary;
   border-radius: 1000px;
   margin-bottom: 30px;
 }
@@ -91,7 +106,7 @@ h1{
   font-size: 40px;
   a{
     span{
-      color:white;
+      color:$primary;
     }
     color:black;
     &:after {
@@ -114,7 +129,7 @@ h1{
 }
 
 #login{
-  color:white;
+  color:$primary;
   margin: 5px;
   text-align: left;
   background: none;
@@ -131,6 +146,7 @@ h1{
 }
 
 #register{
+  border-bottom:0;
   position:relative;
   z-index:2;
   margin: 5px;
@@ -145,13 +161,13 @@ h1{
 }
 
 #text{
-  color:white;
+  color:$primary;
   margin-top: -80px;
 }
 
 #loginImage{
   height:86.5vh;
-  border:2px solid white;
+  border:2px solid $primary;
   border-radius: 100px;
   width:500px;
   display: inline-block;
@@ -181,13 +197,13 @@ header {
           margin-left: 0;
         }
         &.menu {
-          color: white;
+          color: $primary;
           cursor: pointer;
           display: none;
           font-size: 20px;
         }
         a {
-          color: white;
+          color: $primary;
           font-weight: bold;
           position: relative;
           &:after {
@@ -202,7 +218,7 @@ header {
             transition: opacity 0.2s ease;
           }
           &:hover {
-            color:white;
+            color:$primary;
             text-decoration: none;
             &:after {
               opacity: 1;
@@ -215,11 +231,12 @@ header {
 }
 
 section {
-  color:white;
+  color:$primary;
   text-align: center;
   padding-top: 80px;
   padding-bottom: 80px;
   position: relative;
+  border-bottom: 3px solid $primary;
   &:last-of-type {
     border-bottom: 0;
   }
@@ -295,7 +312,19 @@ margin-left: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: $primary;
+  }
+  img{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 56px;
+    position: absolute;
+    height:50px;
+    width:50px;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: rotate(180deg);
+    color: $primary;
   }
 }
 
@@ -305,7 +334,7 @@ div.footer{
   height:50px;
   // padding: 10px 0;
   text-align: center;
-  color: white;
+  color: $primary;
   //position: fixed;
   bottom: 0;
   width:100%;

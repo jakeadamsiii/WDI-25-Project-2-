@@ -47,16 +47,6 @@ $(function () {
       animation: google.maps.Animation.DROP,
       icon: '../assets/images/music-icon.png'
     });
-    // marker.addListener('click', toggleBounce);
-    //
-    // function toggleBounce() {
-    //
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // }
 
     // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
     marker.addListener('click', function () {

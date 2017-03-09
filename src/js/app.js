@@ -45,16 +45,6 @@ $(() => {
       animation: google.maps.Animation.DROP,
       icon: '../assets/images/music-icon.png'
     });
-    // marker.addListener('click', toggleBounce);
-    //
-    // function toggleBounce() {
-    //
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // }
 
     // Add a Google maps event listener to each that marker, which fires the markerClick function, passing in that individual marker and that individual location
     marker.addListener('click', () => {
@@ -69,22 +59,22 @@ $(() => {
   });
 
     // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-        infoWindow.setPosition(pos);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+      infoWindow.setPosition(pos);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
@@ -129,12 +119,12 @@ $(() => {
     infowindow.open(map, marker);
   }
 
-const $save = $('#specialBtn');
+  const $save = $('#specialBtn');
 
-$save.on('click', saveMe);
+  $save.on('click', saveMe);
 
-function saveMe(){
-  $save.text('Saved!');
-}
+  function saveMe(){
+    $save.text('Saved!');
+  }
 
 });
