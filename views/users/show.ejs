@@ -19,13 +19,20 @@
   </form>
 </div>
 <div class="col-lg-12" id="line"></div>
-<% user.events.forEach((event)=>{ %>
-  <%= event.eventName %>
-  <%= event.venue %>
-  <%= event.price %>
-  <%= event.link %>
-  <%= event.date %>
-  <%= event.time %>
-<%})%>
+
+  <% user.events.forEach((event)=>{ %>
+  <div class="saveforme infowindow col-lg-12">
+  <h4><%= event.eventName %></h4>
+  <p> <%= event.venue %></p>
+  <p><%= event.price %></p>
+  <p><%= event.date %></p>
+  <p><%= event.time %></p>
+  <a class="btn" href="<%= event.link %>" target="_blank">Buy tickets</a>
+  <form method="POST" action="/profile/events/<%= event.id %>">
+ <input type="hidden" name="_method" value="DELETE">
+ <button class="delbtn btn">Remove</button>
+  </form>
+  </div>
+  <%})%>
 </div>
 </div>

@@ -33,7 +33,12 @@ userSchema
 userSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
-    if(!this.image) return null;
+
+    //let profImage = this.image;
+    if(!this.image){
+      console.log('working');
+      this.image = 'profilepic.png';
+    }
     if(this.image.match(/^http/)) return this.image;
     return `https://s3-eu-west-1.amazonaws.com/wdildnproject2/${this.image}`;
   });

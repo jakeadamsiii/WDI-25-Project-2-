@@ -36,11 +36,16 @@ router.route('/profile/edit')
 router.route('/profile/events')
 .post(secureRoute, users.createEvent);
 
+router.route('/profile/events/:id')
+.delete(secureRoute, users.deleteEvent);
+
 router.route('/oauth/github')
   .get(oauth.github);
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
+
+
 
 router.all('*', (req, res) => res.notFound());
 

@@ -1,10 +1,20 @@
 body{
   background: #E0E0E2;
   font-family: 'Poppins', sans-serif;
+
 }
 
 h1{
   color: black;
+}
+
+.saveforme{
+  border: 2px solid black;
+  margin-top: 5px;
+}
+
+.hidden{
+  display: none;
 }
 
 #profile{
@@ -46,7 +56,7 @@ h1{
   display:none;
   }
   &:hover {
-    color:#81D2C7;
+    color:black;
   }
 }
 
@@ -54,12 +64,16 @@ h1{
   float:left;
 }
 #logo{
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Bubbler One', sans-serif;
   font-size: 40px;
   a{
+    span{
+      color:white;
+    }
     color:black;
     &:after {
     display:none;
+
     }
   }
 
@@ -72,7 +86,7 @@ h1{
 }
 
 #map{
-  height: 87vh;
+  height: 86vh;
  background-color: grey;
 }
 
@@ -113,32 +127,8 @@ h1{
   display: inline-block;
 }
 
-footer{
-  z-index:5;
-  p{
-    float:right;
-    padding-right: 30px;
-    display:block;
-    opacity: 0.7;
-    height: 8px;
-    font-size: 13px;
-  }
-  ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-.mediabtn{
-  height:30px;
-  width: 30px;
-}
-li {
-  display: inline-block;
-  float: left;
-  margin-left: 20px;
-  line-height: 40px;
-}
-}
+
+
 header {
   // position: fixed;
   top: 0;
@@ -147,7 +137,7 @@ header {
   z-index: 2;
   height: 50px;
   //background: linear-gradient(#7389AE, #B5BAD0);
-  background:#416788;
+  background:#6e7980;
   transition: background-color 0.2s ease;
   nav {
     ul {
@@ -176,7 +166,7 @@ header {
             content: "";
             height: 2px;
             width: 100%;
-            background-color: #81D2C7;
+            background-color: black;
             position: absolute;
             bottom: -4px;
             left: 0;
@@ -210,8 +200,33 @@ section {
   }
 }
 
+input {
+width:200px;
+margin-left: 10px;
+}
+
+#password{
+  margin-left: 106px;
+}
+
+#username{
+  margin-left: 104px;
+}
+
+#firstName{
+  margin-left: 102px;
+}
+
+#lastName{
+  margin-left: 102px;
+}
+
+#email{
+  margin-left: 138px;
+}
+
 #hero{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image4.jpg');
 }
 
 #hero2{
@@ -219,12 +234,12 @@ section {
 }
 
 .hero {
-  height: 90vh;
+  height: 95vh;
   background-position: center;
   background-size: cover;
   position: relative;
   h1 {
-    font-size: 36px;
+    font-size: 46px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -233,34 +248,50 @@ section {
   }
 }
 
-footer {
-  background-color: rgba(20, 20, 20, 1);
-  padding: 10px 0;
+div.footer{
+  z-index:5;
+  background-color: black;
+  height:50px;
+  // padding: 10px 0;
   text-align: center;
   color: white;
-  position: fixed;
+  //position: fixed;
   bottom: 0;
   width:100%;
-}
-
-@media only screen and (max-width: 575px) {
-
-  header {
-    height: auto;
-    nav {
-      ul {
-        li {
-          display: block;
-          float: none;
-          text-align: right;
-          &.menu {
-            display: block;
-          }
-        }
-        .dropdown {
-          display: none;
+  p{
+    float:right;
+    padding-top: 8px;
+    padding-right: 30px;
+    display:block;
+    opacity: 0.7;
+    height: 8px;
+    font-size: 13px;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      display: inline-block;
+      float: left;
+      margin-left: 20px;
+      line-height: 40px;
+      a {
+        img {
+          max-height: 30px;
+          width: 30px;
         }
       }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  #logo {
+      display: none;
+    a {
+      display: none;
     }
   }
 }
