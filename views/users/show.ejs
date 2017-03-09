@@ -1,6 +1,8 @@
+<section id="profilePage">
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+
+    <div class="col-lg-4 ">
         <img id="profilePic" src="<%= user.imageSRC %>" alt="<%= user.username %>">
     </div>
     <section id="profile" class="col-lg-4">
@@ -10,6 +12,7 @@
 </section>
 <div id="btnBox" class="col-lg-4">
   <% if(locals.isAuthenticated) { %>
+    <h2>Profile Settings</h2>
              <a href="/profile/edit" class="btn">Edit</a>
              <form method="POST" action="/profile">
             <input type="hidden" name="_method" value="DELETE">
@@ -36,3 +39,4 @@
   <%})%>
 </div>
 </div>
+</section>

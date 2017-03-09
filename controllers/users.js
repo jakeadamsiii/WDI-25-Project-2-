@@ -19,39 +19,6 @@ function createEventRoute(req, res, next){
   .catch(next);
 }
 
-// function editRoute(req, res, next) {
-//   User
-//     //.findById(req.params.id)
-//     .exec()
-//     .then((user) => {
-//       if(!user) res.notFound();
-//       res.render('users/edit', { user });
-//     })
-//     .catch(next);
-// }
-
-// function newImageRoute(req, res) {
-//   res.render('users/newImage');
-// }
-//
-// function createImageRoute(req, res, next) {
-//   if(req.file) req.body.filename = req.file.key;
-//
-//   // For some reason multer's req.body doesn't behave like body-parser's
-//   req.body = Object.assign({}, req.body);
-//
-//   req.user.images.push(req.body);
-//
-//   req.user
-//     .save()
-//     .then(() => res.redirect('/user'))
-//     .catch((err) => {
-//       console.log(err);
-//       if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
-//       next(err);
-//     });
-// }
-
 function updateRoute(req, res, next) {
   for(const field in req.body) {
     req.user[field] = req.body[field];

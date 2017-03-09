@@ -1,7 +1,17 @@
 body{
-  background: #E0E0E2;
+  background: #1c1b1d;
   font-family: 'Poppins', sans-serif;
 
+}
+
+h5{
+  color:white;
+}
+
+#profilePage{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/profile-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 h1{
@@ -9,6 +19,7 @@ h1{
 }
 
 .saveforme{
+  background: rgba(0,0,0,0.4);
   border: 2px solid black;
   margin-top: 5px;
 }
@@ -18,20 +29,32 @@ h1{
 }
 
 #profile{
-  text-align: left;
+  text-align: center;;
+  h1{
+      color:white;
+  }
+  h2{
+     color:white;
+   }
 }
 
 #btnBox{
-  background: #81D2C7;
+  padding:20px;
+  background: rgba(0,0,0,0.4);
   margin-top:50px;
   border:7px solid white;
+  h2{
+    float:left;
+    font-size: 20px;
+  }
 }
 
 #line{
-  background-color: black;
+  background-color: white;
   height:4px;
   width:100%;
   border-radius: 100px;
+  margin-bottom: 110px;
 }
 
 #profilePic{
@@ -39,7 +62,7 @@ h1{
   width:300px;
   border: 7px solid white;
   border-radius: 1000px;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #profileImg{
@@ -91,22 +114,28 @@ h1{
 }
 
 #login{
-  border: 2px solid black;
+  color:white;
   margin: 5px;
-  border-radius: 40px;
   text-align: left;
-  background: #FDFFEB;
+  background: none;
   padding-bottom: 20px;
+  h3{
+    font-size: 36px;
+  }
+  p{
+    padding-top:10px;
+  }
+  label{
+    font-size: 15px;
+  }
 }
 
 #register{
   position:relative;
   z-index:2;
-  border: 2px solid black;
   margin: 5px;
-  border-radius: 40px;
   text-align: left;
-  background: #FDFFEB;
+  background: rgb(218, 218, 218);
   h2{
       margin-top:-50px;
   }
@@ -116,6 +145,7 @@ h1{
 }
 
 #text{
+  color:white;
   margin-top: -80px;
 }
 
@@ -126,8 +156,6 @@ h1{
   width:500px;
   display: inline-block;
 }
-
-
 
 header {
   // position: fixed;
@@ -187,11 +215,11 @@ header {
 }
 
 section {
+  color:white;
   text-align: center;
   padding-top: 80px;
   padding-bottom: 80px;
   position: relative;
-  border-bottom: 2px solid #81D2C7;
   &:last-of-type {
     border-bottom: 0;
   }
@@ -201,11 +229,17 @@ section {
 }
 
 input {
+  color:black;
 width:200px;
 margin-left: 10px;
 }
 
 #password{
+  margin-left: 106px;
+}
+
+#password2{
+    color:black;
   margin-left: 106px;
 }
 
@@ -222,6 +256,7 @@ margin-left: 10px;
 }
 
 #email{
+  color:black;
   margin-left: 138px;
 }
 
@@ -233,13 +268,29 @@ margin-left: 10px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero2-image.jpg');
 }
 
+#hero3{
+    height: 86vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image3.jpg');
+}
+
+#hero4{
+    height: 86vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/hero-image.jpg');
+}
+
+#hero5{
+    height: 86vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/error-image.jpg');
+}
+
 .hero {
   height: 95vh;
   background-position: center;
   background-size: cover;
   position: relative;
   h1 {
-    font-size: 46px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 56px;
     position: absolute;
     top: 50%;
     left: 50%;
