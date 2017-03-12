@@ -119,12 +119,12 @@ $(() => {
     infowindow.open(map, marker);
   }
 
-  const $save = $('#specialBtn');
+  const $scroller = $('#scroller');
+  const $text = $('#text');
 
-  $save.on('click', saveMe);
+  $scroller.on('click', scroll);
 
-  function saveMe(){
-    $save.text('Saved!');
+  function scroll(){
+    $('html,body').animate({scrollTop: $text.offset().top},'slow');
   }
-
 });

@@ -110,11 +110,12 @@ $(function () {
     infowindow.open(map, marker);
   }
 
-  var $save = $('#specialBtn');
+  var $scroller = $('#scroller');
+  var $text = $('#text');
 
-  $save.on('click', saveMe);
+  $scroller.on('click', scroll);
 
-  function saveMe() {
-    $save.text('Saved!');
+  function scroll() {
+    $('html,body').animate({ scrollTop: $text.offset().top }, 'slow');
   }
 });
